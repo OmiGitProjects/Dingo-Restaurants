@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block Content %}
+
+<section class="page-heading" style="background-image:  url({% static 'images/heading-bg.jpg' %}); ">
+        <div class="container">
+                <div class="row">
+                        <div class="col-md-12">
+                                <h1>DIngo Restraunts</h1>
+                        </div>
+                </div>
+        </div>
+</section>
+
+<div class="container">
+        <div class="jumbotron jumbotron-fluid" style="background-color: rgb(252, 252, 252); margin-top:10px">
+
+                <h2>Logout Successfully : <a href="{% url 'login' %}">Login Again</a></h2><br>
+
+                <h3>Welcome to Our Dingo Restaurant!</h3>
+                <p class="lead">You Can Contact Us for More Information and Reservation Purpose</p>
+                <a href="#" type="button" class="btn btn-danger">Contact Us</a>
+        </div>
+</div>
+
+{% endblock Content %}

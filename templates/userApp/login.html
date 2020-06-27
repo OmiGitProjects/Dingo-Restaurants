@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block Content %}
+
+<section class="page-heading" style="background-image:  url({% static 'images/heading-bg.jpg' %}); ">
+        <div class="container">
+                <div class="row">
+                        <div class="col-md-12">
+                                <h1>Login To Access Features</h1>
+                        </div>
+                </div>
+        </div>
+</section>
+
+<div class="container">
+        <div class="row">
+                <div class="col-md-8">
+                        <div class="jumbotron jumbotron" style="background-color: rgb(252, 252, 252); margin-top:10px">
+                                <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <legend>Login To Our Dingo</legend>
+                                        {{ form|crispy }}
+                                        <div class="submit">
+                                                <button type="submit" class="btn btn-danger">Sign-up</button>
+                                        </div>
+                                </form>
+                                <div class="login" style="margin-top:10px">
+                                        <small>Need An Account?</small><a href="#" type="button"> Register Here</a>
+                                </div>
+                        </div>
+                </div>
+
+                <div class="col-md-4">
+                        <div class="jumbotron jumbotron-fluid"
+                                style="background-color: rgb(252, 252, 252); margin-top:10px">
+                                <h3>Welcome to Our Dingo Restaurant!</h3>
+                                <p class="lead">You Can Contact Us for More Information and Reservation Purpose</p>
+                                <a href="#" type="button" class="btn btn-danger">Contact Us</a>
+                        </div>
+                </div>
+        </div>
+</div>
+{% endblock Content %}
