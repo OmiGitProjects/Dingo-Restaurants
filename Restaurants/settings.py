@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'mainapp.apps.MainappConfig',
     'userApp.apps.UserappConfig',
     'crispy_forms',
+    'blogs.apps.BlogsConfig',
+    'contacts.apps.ContactsConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,18 +123,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = 'login'
-
 LOGIN_REDIRECT_URL = 'HomePage'
-
 
 #Email settings
 EMAIL_HOST = 'smtp.gmail.com'

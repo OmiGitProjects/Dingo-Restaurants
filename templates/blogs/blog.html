@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Content %}
+
+
+
+<section class="page-heading" style="background-image:  url({% static 'images/heading-bg.jpg' %}); ">
+        <div class="container">
+                <div class="row">
+                        <div class="col-md-12">
+                                <h1>Our Blog</h1>
+                                <p>You can feel free to use our template for any purpose of your websites. Thank you.
+                                        Template re-distribution is <strong>not allowed</strong> in any download site.
+                                </p>
+                        </div>
+                </div>
+        </div>
+</section>
+
+
+<section class="blog-page">
+        <div class="container">
+                <div class="row">
+                        {% for blog in blogs %}
+                                <div class="col-md-8 col-md-offset-2">
+                                        <div class="blog-item">
+                                                <img src="{{ blog.postImage.url }}" alt="{{ blog.title }}">
+                                                <div class="date">{{ blog.timeStamp }}</div>
+                                                <div class="down-content">
+                                                        <h4>{{ blog.title }}</h4>
+                                                        <span>{{ blog.category }}</span>
+                                                        <p>{{ blog.content }}</p>
+                                                        <div class="text-button">
+                                                                <a href="#">Continue Reading</a>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        {% endfor %}
+                        <div class="col-md-8 col-md-offset-2">
+                                <ul class="page-number">
+                                        <li><a href="#">1</a></li>
+                                        <li class="active"><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">&gt;&gt;</a></li>
+                                </ul>
+                        </div>
+                </div>
+        </div>
+</section>
+
+
+{% endblock Content %}

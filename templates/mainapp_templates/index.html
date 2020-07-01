@@ -219,42 +219,19 @@
                         </div>
                 </div>
                 <div class="row">
+                        {% for weekly in weeklyfood %}
                         <div class="col-md-4">
                                 <div class="food-item">
-                                        <h2>Breakfast</h2>
-                                        <img src="{% static 'images/breakfast_item.jpg' %}" alt="">
-                                        <div class="price">$4.50</div>
+                                        <h2>{{ weekly.foodHour }}</h2>
+                                        <img src="{{ weekly.foodImage.url }}" alt="" height="300px">
+                                        <div class="price">Rs {{ weekly.price }}</div>
                                         <div class="text-content">
-                                                <h4>Kale Chips Art Party</h4>
-                                                <p>Dreamcatcher squid ennui cliche chicharros nes echo small batch jean
-                                                        shorts hexagon street art knausgaard wolf...</p>
+                                                <h4>{{ weekly.title }}</h4>
+                                                <p>{{ weekly.detail }}</p>
                                         </div>
                                 </div>
-                        </div>
-                        <div class="col-md-4">
-                                <div class="food-item">
-                                        <h2>Lunch</h2>
-                                        <img src="{% static 'images/lunch_item.jpg' %}" alt="">
-                                        <div class="price">$7.50</div>
-                                        <div class="text-content">
-                                                <h4>Taiyaki Gastro Tousled</h4>
-                                                <p>Dreamcatcher squid ennui cliche chicharros nes echo small batch jean
-                                                        shorts hexagon street art knausgaard wolf...</p>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-md-4">
-                                <div class="food-item">
-                                        <h2>Dinner</h2>
-                                        <img src="{% static 'images/dinner_item.jpg' %}" alt="">
-                                        <div class="price">$12.50</div>
-                                        <div class="text-content">
-                                                <h4>Batch Squid Jean Shorts</h4>
-                                                <p>Dreamcatcher squid ennui cliche chicharros nes echo small batch jean
-                                                        shorts hexagon street art knausgaard wolf...</p>
-                                        </div>
-                                </div>
-                        </div>
+                        </div>  
+                        {% endfor %}                      
                 </div>
         </div>
 </section>
@@ -271,70 +248,22 @@
                         </div>
                 </div>
                 <div class="row">
+                        {% for blog in blogs %}
                         <div class="col-md-6">
                                 <div class="blog-post">
-                                        <img src="{% static 'images/blog_post_01.jpg' %}" alt="">
-                                        <div class="date">26 Oct 2020</div>
+                                        <img src="{{ blog.postImage.url }}" alt="{{ blog.title }}" height="200px">
+                                        <div class="date">{{ blog.timeStamp }}</div>
                                         <div class="right-content">
-                                                <h4>Stumptown Tofu Schlitz</h4>
-                                                <span>Branding / Admin</span>
-                                                <p>Skateboard iceland twee tofu shaman crucifix vice before they sold
-                                                        out corn hole occupy drinking vinegar chambra meggings kale
-                                                        chips hexagon...</p>
+                                                <h4>{{ blog.title }}</h4>
+                                                <span>{{ blog.catagory }}</span>
+                                                <p>{{ blog.displayContent|truncatechars:80 }}</p>
                                                 <div class="text-button">
-                                                        <a href="#">Continue Reading</a>
+                                                        <a href="blog/{{ blog.slug }}">Continue Reading</a>
                                                 </div>
                                         </div>
                                 </div>
                         </div>
-                        <div class="col-md-6">
-                                <div class="blog-post">
-                                        <img src="{% static 'images/blog_post_02.jpg' %}" alt="">
-                                        <div class="date">21 Oct 2020</div>
-                                        <div class="right-content">
-                                                <h4>Succulents Hashtag Folk</h4>
-                                                <span>Branding / Admin</span>
-                                                <p>Skateboard iceland twee tofu shaman crucifix vice before they sold
-                                                        out corn hole occupy drinking vinegar chambra meggings kale
-                                                        chips hexagon...</p>
-                                                <div class="text-button">
-                                                        <a href="#">Continue Reading</a>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-md-6">
-                                <div class="blog-post">
-                                        <img src="{% static 'images/blog_post_03.jpg' %}" alt="">
-                                        <div class="date">11 Oct 2020</div>
-                                        <div class="right-content">
-                                                <h4>Knaus Sriracha Pinterest</h4>
-                                                <span>Dessert / Chef</span>
-                                                <p>Skateboard iceland twee tofu shaman crucifix vice before they sold
-                                                        out corn hole occupy drinking vinegar chambra meggings kale
-                                                        chips hexagon...</p>
-                                                <div class="text-button">
-                                                        <a href="#">Continue Reading</a>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-md-6">
-                                <div class="blog-post">
-                                        <img src="{% static 'images/blog_post_04.jpg' %}" alt="">
-                                        <div class="date">03 Oct 2020</div>
-                                        <div class="right-content">
-                                                <h4>Crucifix Selvage Coat</h4>
-                                                <span>Plate / Chef</span>
-                                                <p>Skateboard iceland twee tofu shaman crucifix vice before they sold
-                                                        out corn hole occupy drinking vinegar chambra meggings kale
-                                                        chips hexagon...</p>
-                                                <div class="text-button">
-                                                        <a href="#">Continue Reading</a>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
+                        {% endfor %}
                 </div>
         </div>
 </section>
@@ -350,12 +279,12 @@
                                 </div>
                         </div>
                 </div>
-                <form id="contact" action="" method="get">
+                <form id="contact" action="{% url 'newsLetter' %}" method="POST">
+                        {% csrf_token %}
                         <div class="row">
                                 <div class="col-md-4 col-md-offset-3">
                                         <fieldset>
-                                                <input name="email" type="text" class="form-control" id="email"
-                                                        placeholder="Enter your email here..." required="">
+                                                <input name="email" type="text" class="form-control" id="email" placeholder="Enter your email here..." value="{{ request.user.email }}" required="">
                                         </fieldset>
                                 </div>
                                 <div class="col-md-2">

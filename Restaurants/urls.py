@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path ,include
 from userApp import views as userView
 from django.contrib.auth import views as authViews
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -25,4 +27,7 @@ urlpatterns = [
     path('register/', userView.register, name='register'),
     path('login/', authViews.LoginView.as_view(template_name='userApp/login.html'), name='login'),
     path('logout/', authViews.LogoutView.as_view(template_name='userApp/logout.html'), name='logout'),
-]
+    path('blog/', include('blogs.urls')),
+    path('contact/', include('contacts.urls')),
+] 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -58,9 +58,9 @@ https://templatemo.com/tm-507-victory
                                                 <li><a href="{% url 'HomePage' %}" class="active">Home</a></li>
                                                 <li><a href="{% url 'about_page' %}" class="active">About</a></li>
                                                 <li><a href="{% url 'menu_page' %}" class="active">Our Menus</a></li>
-                                                <li><a href="{% url 'blog_page' %}" class="active">Blog Entries</a></li>
+                                                <li><a href="{% url 'BlogPage' %}" class="active">Blog Entries</a></li>
                                                 {% if user.is_authenticated %}
-                                                <li><a href="{% url 'contact_page' %}" class="active">Contact Us</a></li>
+                                                <li><a href="{% url 'ContactInfo' %}" class="active">Contact Us</a></li>
                                                 <li> <a href="{% url 'logout' %}" class="btn btn-white">Logout</a></li>
                                                 {% else %}
                                                 <li> <a href="{% url 'register' %}" class="btn btn-white">Sign up</a></li>
