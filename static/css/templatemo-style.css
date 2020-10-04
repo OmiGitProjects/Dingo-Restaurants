@@ -34,7 +34,7 @@ https://templatemo.com/tm-507-victory
 
 body {
 	overflow-x: hidden;
-	background-color: #fff;
+	background-color: rgb(214, 206, 206);
 }
 
 ul {
@@ -43,7 +43,7 @@ ul {
 }
 
 p {
-	color: #9a9a9a;
+	color: #e7e1e1;
 	font-size: 13px;
 	line-height: 24px;
 }
@@ -76,7 +76,7 @@ p {
 .primary-white-button a {
 	display: inline-block;
 	background-color: #fff;
-	color: #f2745f;
+	color: #e0806f;
 	font-size: 13px;
 	text-transform: uppercase;
 	font-weight: 500;
